@@ -18,6 +18,7 @@ function ProtectedPage() {
     localStorage.removeItem('refreshToken');
     navigate('/login');
   };
+  //gestisco il tasto logout come da consegna
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -28,9 +29,9 @@ function ProtectedPage() {
         console.error('Errore nel recupero dati utente');
       }
     };
-
     fetchUser();
   }, []);
+  //una volta renderizzata la pagina lancio una get per ottenere i dati dell'utente dall'api fornita
 
   return (
     <div style={{ maxWidth: 600, margin: 'auto' }}>

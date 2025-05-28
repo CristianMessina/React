@@ -4,11 +4,13 @@ import axios from 'axios';
 import { useNavigate } from 'react-router';
 
 function LoginPage() {
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   
   const navigate = useNavigate();
+
   const isValidEmail = (email: string): boolean => {
   const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return regex.test(email);
@@ -16,9 +18,13 @@ function LoginPage() {
   
 
   const handleLogin = async (e: React.FormEvent) => {
+
     e.preventDefault();
+    //blocco il comportamento di submit standard del browser.
+
     if (!isValidEmail(email)) return setError('Email non valida');
     if (password.length < 6) return setError('Minimo 6 caratteri per la password');
+    //validazione superficiale dei campi del form
 
     try {
       const res = await axios.post(
@@ -35,6 +41,7 @@ function LoginPage() {
     } catch {
       setError('Credenziali non valide');
     }
+    //valorizzo i token all'interno di un try/catch per simulare l'immissione di credenziali errate, nel caso in cui la chiamata ai token fallisse.
   };
 
   return (

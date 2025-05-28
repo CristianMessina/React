@@ -16,6 +16,7 @@ function App() {
               <ProtectedPage />
             </ProtectedRoute>
           }
+          //chiamo ProtectedRoute, che in caso di esito positivo, abilita la navigazione nell'elemento figlio, ovvero ProtectedPage.
         />
         <Route path="*" element={<LoginPage />} />
       </Routes>
